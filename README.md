@@ -1,6 +1,6 @@
 # Data Sorting Visualization
 
-# <https://kevin6767.github.io/Data Sorting Visualization>
+# <https://kevin6767.github.io/sorting-algorithm-visualization>
 
 #### Table of Contents
 
