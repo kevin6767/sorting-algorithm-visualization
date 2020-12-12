@@ -38,12 +38,12 @@ function swap(el1, el2) {
 			setTimeout(() => {
 				container.insertBefore(el2, el1);
 				resolve();
-			}, 250);
+			}, 300);
 		});
 	});
 }
 
-async function insertSort(delay = 200) {
+async function insertSort(delay = 300) {
 	let blocks = document.querySelectorAll('.block');
 	for (let i = 0; i < blocks.length; i++) {
 		for (let j = i - 1; j > -1; j--) {
