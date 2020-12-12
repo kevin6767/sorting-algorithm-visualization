@@ -43,12 +43,12 @@ function swap(el1, el2) {
 	});
 }
 
-async function insertSort(delay = 300) {
+async function insertSort(delay = 450) {
 	let blocks = document.querySelectorAll('.block');
 	for (let i = 0; i < blocks.length; i++) {
 		for (let j = i - 1; j > -1; j--) {
 			blocks[j].style.backgroundColor = '#FF4949';
-			blocks[j + 1].style.backgroundColor = '#FF4949';
+			blocks[j + 1].style.backgroundColor = '#13CE66';
 
 			await new Promise((resolve) =>
 				setTimeout(() => {
@@ -67,8 +67,6 @@ async function insertSort(delay = 300) {
 			blocks[j].style.backgroundColor = '#58B7FF';
 			blocks[j + 1].style.backgroundColor = '#58B7FF';
 		}
-
-		blocks[blocks.length - i - 1].style.backgroundColor = '#13CE66';
 	}
 }
 
