@@ -71,4 +71,3 @@ async function insertSort(delay = 450) {
 }
 
 generateBlocks();
-insertSort();
