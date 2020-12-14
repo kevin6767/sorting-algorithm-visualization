@@ -1,12 +1,9 @@
 const container = document.querySelector('.data-container');
-
-function generateBlocks(num = 20) {
-	if (num && typeof num !== 'number') {
-		alert('First argument must be a typeof Number');
-		return;
-	}
+const num = 20;
+const frame_speed = 450;
+function generateBlocks(num) {
 	for (let i = 0; i < num; i += 1) {
-		const value = Math.floor(Math.random() * 100);
+		const value = Math.floor(Math.random() * 100) + 5;
 
 		const block = document.createElement('div');
 		block.classList.add('block');
@@ -43,7 +40,7 @@ function swap(el1, el2) {
 	});
 }
 
-async function insertSort(delay = 450) {
+async function insertSort() {
 	let blocks = document.querySelectorAll('.block');
 	for (let i = 0; i < blocks.length; i++) {
 		for (let j = i - 1; j > -1; j--) {
@@ -53,7 +50,7 @@ async function insertSort(delay = 450) {
 			await new Promise((resolve) =>
 				setTimeout(() => {
 					resolve();
-				}, delay)
+				}, frame_speed)
 			);
 
 			const value1 = Number(blocks[j + 1].childNodes[0].innerHTML);
@@ -69,5 +66,66 @@ async function insertSort(delay = 450) {
 		}
 	}
 }
+async function bubbleSort() {
+	let blocks = document.querySelectorAll('.block');
+	for (let i = 0; i < blocks.length - 1; i += 1) {
+		for (let j = 0; j < blocks.length - i - 1; j += 1) {
+			blocks[j].style.backgroundColor = '#FF4949';
+			blocks[j + 1].style.backgroundColor = '#13CE66';
 
-generateBlocks();
+			await new Promise((resolve) =>
+				setTimeout(() => {
+					resolve();
+				}, frame_speed)
+			);
+
+			const value1 = Number(blocks[j].childNodes[0].innerHTML);
+			const value2 = Number(blocks[j + 1].childNodes[0].innerHTML);
+
+			if (value1 > value2) {
+				await swap(blocks[j], blocks[j + 1]);
+				blocks = document.querySelectorAll('.block');
+			}
+
+			blocks[j].style.backgroundColor = '#58B7FF';
+			blocks[j + 1].style.backgroundColor = '#58B7FF';
+		}
+	}
+}
+
+async function selectionSort() {
+	let blocks = document.querySelectorAll('.block');
+
+	for (let i = 0; i < blocks.length; i++) {
+		// Assume a minimum value
+		let min = i;
+		for (let j = i + 1; j < blocks.length; j++) {
+			blocks[j].style.backgroundColor = '#FF4949';
+			blocks[min].style.backgroundColor = '#13CE66';
+			blocks[i].style.backgroundColor = 'orange';
+
+			await new Promise((resolve) =>
+				setTimeout(() => {
+					resolve();
+				}, frame_speed)
+			);
+			const value1 = Number(blocks[j].childNodes[0].innerHTML);
+			const value2 = Number(blocks[min].childNodes[0].innerHTML);
+			if (value1 < value2) {
+				blocks[min].style.backgroundColor = '#58B7FF';
+				min = j;
+			}
+			blocks[j].style.backgroundColor = '#58B7FF';
+		}
+		if (min !== i) {
+			let tmp = blocks[i];
+			blocks[i] = blocks[min];
+			blocks[min] = tmp;
+			await swap(blocks[i], blocks[min]);
+			blocks = document.querySelectorAll('.block');
+		}
+		// Swap if new minimun value found
+		blocks[i].style.backgroundColor = '#58B7FF';
+	}
+}
+generateBlocks(num);
