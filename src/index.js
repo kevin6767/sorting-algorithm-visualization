@@ -1,6 +1,6 @@
 const container = document.querySelector('.data-container');
 const num = 20;
-const frame_speed = 450;
+const frame_speed = 100;
 function generateBlocks(num) {
 	for (let i = 0; i < num; i += 1) {
 		const value = Math.floor(Math.random() * 100) + 5;
@@ -95,37 +95,36 @@ async function bubbleSort() {
 
 async function selectionSort() {
 	let blocks = document.querySelectorAll('.block');
-
-	for (let i = 0; i < blocks.length; i++) {
-		// Assume a minimum value
+	let convertedBlocks = Array.from(blocks);
+	let len = convertedBlocks.length;
+	for (let i = 0; i < len; i++) {
 		let min = i;
-		for (let j = i + 1; j < blocks.length; j++) {
-			blocks[j].style.backgroundColor = '#FF4949';
-			blocks[min].style.backgroundColor = '#13CE66';
-			blocks[i].style.backgroundColor = 'orange';
-
+		for (let j = i + 1; j < len; j++) {
+			convertedBlocks[j].style.backgroundColor = 'red';
+			convertedBlocks[min].style.backgroundColor = 'green';
+			convertedBlocks[i].style.backgroundColor = 'orange';
 			await new Promise((resolve) =>
 				setTimeout(() => {
 					resolve();
 				}, frame_speed)
 			);
-			const value1 = Number(blocks[j].childNodes[0].innerHTML);
-			const value2 = Number(blocks[min].childNodes[0].innerHTML);
-			if (value1 < value2) {
-				blocks[min].style.backgroundColor = '#58B7FF';
+			if (
+				Number(convertedBlocks[min].childNodes[0].innerHTML) >
+				Number(convertedBlocks[j].childNodes[0].innerHTML)
+			) {
+				convertedBlocks[min].style.backgroundColor = '#58B7FF';
 				min = j;
 			}
-			blocks[j].style.backgroundColor = '#58B7FF';
+			convertedBlocks[j].style.backgroundColor = '#58B7FF';
 		}
 		if (min !== i) {
-			let tmp = blocks[i];
-			blocks[i] = blocks[min];
-			blocks[min] = tmp;
-			await swap(blocks[i], blocks[min]);
-			blocks = document.querySelectorAll('.block');
+			let tmp = convertedBlocks[i];
+			convertedBlocks[i] = convertedBlocks[min];
+			convertedBlocks[min] = tmp;
+			await swap(convertedBlocks[i], convertedBlocks[min]);
 		}
-		// Swap if new minimun value found
-		blocks[i].style.backgroundColor = '#58B7FF';
+		convertedBlocks[min].style.backgroundColor = '#58B7FF';
+		convertedBlocks[i].style.backgroundColor = '#58B7FF';
 	}
 }
 generateBlocks(num);
