@@ -4,15 +4,15 @@
 
 #### Table of Contents
 
-- [Description](https://github.com/kevin6767/Data Sorting Visualization#description)
+- [Description](https://github.com/kevin6767/sorting-algorithm-visualization#description)
 
-- [Liscenses](https://github.com/kevin6767/Data Sorting Visualization#liscenses)
+- [Liscenses](https://github.com/kevin6767/sorting-algorithm-visualization#liscenses)
 
-- [Usages](https://github.com/kevin6767/Data Sorting Visualization#usages)
+- [Usages](https://github.com/kevin6767/sorting-algorithm-visualization#usages)
 
-- [Installation](https://github.com/kevin6767/Data Sorting Visualization#installation)
+- [Installation](https://github.com/kevin6767/sorting-algorithm-visualization#installation)
 
-- [Questions](https://github.com/kevin6767/Data Sorting Visualization#questions)
+- [Questions](https://github.com/kevin6767/sorting-algorithm-visualization#questions)
 
 # Description
 
